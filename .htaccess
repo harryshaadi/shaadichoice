@@ -1,0 +1,28 @@
+Options +FollowSymLinks
+
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^shaadichoice.com [NC]
+RewriteRule ^(.*)$ http://www.shaadichoice.com/$1 [L,R=301]
+
+IndexIgnore *
+
+RewriteRule ^matrimony/([^/.]+)/?$ community-details.php?id=$1&lang=$2&rel=$3 [L]
+
+RewriteRule ^profile/([^/.]+)/?$ self-profile.php?id=$1 [L]
+
+RewriteRule ^user/search-result/?$ search.php [L]
+
+RewriteRule ^user/search-result/([^/.]+)?$ search.php?st=$1& [L]
+
+RewriteRule ^profile-details/([^/.]+)/([^/.]+)/([^/.]+)/([^/.]+)?$ view-profile.php?id=$1&st=$2&active=$3&divView=$4 [L]
+
+RewriteRule ^profile-details/([^/.]+)/([^/.]+)?$ view-profile.php?id=$1&resp=$2 [L]
+
+RewriteRule ^profile-details/([^/.]+)?$ view-profile.php?id=$1 [L]
+
+RewriteRule ^matrimonial/([^/.]+)/?$ religion-details.php?id=$1 [L]
+
+RewriteRule ^member/review/([^/.]+)/?$ user-review.php?id=$1 [L]
+
+

@@ -1,0 +1,127 @@
+<?php 
+	include('head.php');
+?> 
+<link href="css/jquery.css" rel="stylesheet" type="text/css" />
+<!--  end navbar -->
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-3 panel-body">
+						<div class="left-tab">
+							<?php include_once('msg_left_panel.php'); ?>
+						</div>
+					</div>
+					
+					<div class="col-sm-9 panel-body">
+						<div class="inbox">
+							<div class="inbox-heading">
+									<div class="row">
+										<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+											<h1>Filtered</h1>
+											<div class=" inbox-check">
+												<div class="checkbox">
+												  <form>
+													<label><input type="checkbox" value="">Show unread only</label>
+												  </form>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">
+											<div class="dropdown pull-right">
+											  <button class="btn btn-setting" data-toggle="collapse" data-target="#demo" title="Filtered"><i class="fa fa-filter" aria-hidden="true"></i></button>
+											</div>
+										</div>
+									</div>
+							</div>
+							<hr>
+							<div class="ProfileThumb">
+								<div class="panel-body text-center filter">
+									<h3>Looks like you don't have any conversations yet</h3>
+									<h4>Start a conversation with someone you are interested in.</h4>
+									<a href="upgrade.php" class="btn btn-default2">Upgrade Now</a>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</section>
+
+
+<?php include_once('chat_process.php'); ?>
+<?php include('footer.php');?> 
+<?php include_once('shaadichoice_chat.php'); ?>
+
+
+<script src="js/jquery.js"></script>
+
+<script>
+$(document).ready(function(){
+	$('.collapse').on('shown.bs.collapse',function(){
+		$(this).parent().find('.fa-plus-circle').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+	}).on('hidden.bs.collapse',function(){
+		$(this).parent().find('.fa-minus-circle').removeClass('fa-minus-circle').addClass('fa-plus-circle');	
+	})
+});
+</script>
+
+
+<script>
+	$( function() {
+		$( "#slider-range" ).slider({
+			range: true,
+			min: 20,
+			max: 60,
+			values: [ 20, 60 ],
+			slide: function( event, ui ) {
+				$( "#age" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ]);
+			}
+		});
+		$( "#age" ).val($( "#slider-range" ).slider( "values", 0 ) +
+			" - " + $( "#slider-range" ).slider( "values", 1 ) );
+	} );
+</script>
+
+<script>
+	$( function() {
+		$( "#slider-range1" ).slider({
+			range: true,
+			min: 0,
+			max: 200,
+			values: [ 0, 200 ],
+			slide: function( event, ui ) {
+				$( "#height" ).val(ui.values[ 0 ] + " cm " + " - " + ui.values[ 1 ] + " cm"  );
+			}
+		});
+		$( "#height" ).val($( "#slider-range1" ).slider( "values", 0 ) + " cm " +
+			" - " + $( "#slider-range1" ).slider( "values", 1 )+ " cm " );
+	} );
+</script> 
+
+
+<script>
+	function showhidebutton(data,ID){
+		//alert("MY CURRENT data"+data+"ID"+ID);
+		if($(this).hasClass('locked_active') || $(this).hasClass('unlocked_inactive')){
+		/* code to do when unlocking */
+        $('#switch_status').html('Switched on.');
+		}else{
+			/* code to do when locking */
+			$('#switch_status').html('Switched off.');
+		}
+		//$('#'+data+ID).html('hello');
+		
+		/* reverse locking status */
+		$('#toggle_event_editing'+ID+' button').eq(0).toggleClass('locked_inactive locked_active btn-default btn-danger');
+		$('#toggle_event_editing'+ID+' button').eq(1).toggleClass('unlocked_inactive unlocked_active btn-danger btn-default');
+		
+		
+	}
+</script>
+
